@@ -1,0 +1,90 @@
+[
+    {
+        "_id": "member1",
+        "img": "",
+        "name": "Максим Иванов",
+        "age": 36,
+        "contact": {
+            "email": "maksipin@gmail.com",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "@ma_ivanov",
+                    "link": "https://t.me/ma_ivanov"
+                },
+                {
+                    "title": "VK",
+                    "text": "vk.com/ma_ivanov",
+                    "link": "https://vk.com/ma_ivanov"
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+    {
+        "_id": "member2",
+        "img": "",
+        "name": "Сергей Медведев",
+        "age": "",
+        "contact": {
+            "email": "",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "",
+                    "link": ""
+                },
+                {
+                    "title": "VK",
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+    {
+        "_id": "member3",
+        "img": "",
+        "name": "Алексей Пискарев",
+        "age": "",
+        "contact": {
+            "email": "",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "",
+                    "link": ""
+                },
+                {
+                    "title": "VK",
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+    {
+        "_id": "member4",
+        "img": "",
+        "name": "Роман Чигвинцев",
+        "age": "",
+        "contact": {
+            "email": "",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "",
+                    "link": ""
+                },
+                {
+                    "title": "VK",
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        "description": "Some text"
+    }
+]

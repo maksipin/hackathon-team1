@@ -1,9 +1,9 @@
 import React from "react";
 
-const UserPage = () => (
+const LoginPage = () => (
     <div className="text-red-800 text-center align-middle font-bold">
-        <h1>UserPage</h1>
+        <h1>LoginPage</h1>
     </div>
 );
 
-export default UserPage;
+export default LoginPage;

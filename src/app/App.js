@@ -1,11 +1,6 @@
 import React from "react";
 // Libs
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Redirect
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 // Components
 import AppLoader from "./hoc/AppLoader";
 import FavouritePage from "./components/page/favoritePage";
@@ -20,44 +15,39 @@ import AuthLayout from "./layouts/AuthLayout";
 function App() {
     return (
         <AppLoader>
-            <Router>
-                <Switch>
-                    <Route path="/auth/:path?" exact>
-                        <AuthLayout>
-                            <Switch>
-                                <Route path="/auth/login">
-                                    <LoginPage />
-                                </Route>
-                                <Route path="/auth/signup">
-                                    <SignUpPage />
-                                </Route>
-                                <Route path="*">
-                                    <Redirect to="/auth/signup" />
-                                </Route>
-                            </Switch>
-                        </AuthLayout>
-                    </Route>
+            <Switch>
+                <Route path="/auth/:path?" exact>
+                    <AuthLayout>
+                        <Switch>
+                            <Route path="/auth/login">
+                                <LoginPage />
+                            </Route>
+                            <Route path="/auth/signup">
+                                <SignUpPage />
+                            </Route>
+                            <Route path="*">
+                                <Redirect to="/auth/signup" />
+                            </Route>
+                        </Switch>
+                    </AuthLayout>
+                </Route>
 
-                    <Route>
-                        <UsersLayout>
-                            <Switch>
-                                <Route path="/" exact>
-                                    <MainPage />
-                                </Route>
-                                <Route path="/favourite">
-                                    <FavouritePage />
-                                </Route>
-                                <Route path="/:userId">
-                                    <UserPage />
-                                </Route>
-                                <Route path="*">
-                                    <Redirect to="/" />
-                                </Route>
-                            </Switch>
-                        </UsersLayout>
-                    </Route>
-                </Switch>
-            </Router>
+                <Route path="/">
+                    <UsersLayout>
+                        <Switch>
+                            <Route path="/" exact>
+                                <MainPage />
+                            </Route>
+                            <Route path="/favourite">
+                                <FavouritePage />
+                            </Route>
+                            <Route path="/:userId">
+                                <UserPage />
+                            </Route>
+                        </Switch>
+                    </UsersLayout>
+                </Route>
+            </Switch>
         </AppLoader>
     );
 }

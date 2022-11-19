@@ -56,23 +56,24 @@
         "_id": "member3",
         "img": "../../../../img/member3.jpeg",
         "name": "Роман Чигвинцев",
+
         "badge": {
             "color": "warning",
             "name": "Reduxman"
         },
-        "age": "",
+        "age": "22",
         "contact": {
-            "email": "",
+            "email": "ChigvincevRA@mail.ru",
             "social": [
                 {
                     "title": "telegram",
-                    "text": "",
-                    "link": ""
+                    "text": "@Shallfeu_313",
+                    "link": "https://t.me/Shallfeu_313"
                 },
                 {
                     "title": "VK",
-                    "text": "",
-                    "link": ""
+                    "text": "vk.com/ma_ivanov",
+                    "link": "https://vk.com/shallfeu"
                 }
             ]
         },

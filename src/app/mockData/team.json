@@ -1,8 +1,12 @@
 [
     {
         "_id": "member1",
-        "img": "",
+        "img": "../../../../img/member1.jpg",
         "name": "Максим Иванов",
+        "badge": {
+            "color": "primary",
+            "name": "Team leader"
+        },
         "age": 36,
         "contact": {
             "email": "maksipin@gmail.com",
@@ -23,8 +27,12 @@
     },
     {
         "_id": "member2",
-        "img": "",
+        "img": "../../../../img/member2.jpg",
         "name": "Сергей Медведев",
+        "badge": {
+            "color": "danger",
+            "name": "Designer"
+        },
         "age": "",
         "contact": {
             "email": "",
@@ -43,32 +51,16 @@
         },
         "description": "Some text"
     },
+
     {
         "_id": "member3",
-        "img": "",
-        "name": "Алексей Пискарев",
-        "age": "",
-        "contact": {
-            "email": "",
-            "social": [
-                {
-                    "title": "telegram",
-                    "text": "",
-                    "link": ""
-                },
-                {
-                    "title": "VK",
-                    "text": "",
-                    "link": ""
-                }
-            ]
-        },
-        "description": "Some text"
-    },
-    {
-        "_id": "member4",
-        "img": "",
+        "img": "../../../../img/member3.jpeg",
         "name": "Роман Чигвинцев",
+
+        "badge": {
+            "color": "warning",
+            "name": "Reduxman"
+        },
         "age": "22",
         "contact": {
             "email": "ChigvincevRA@mail.ru",

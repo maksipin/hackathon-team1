@@ -9,7 +9,7 @@ import {
 // Components
 import AppLoader from "./hoc/AppLoader";
 import FavouritePage from "./components/page/favoritePage";
-import MainPage from "./components/page/mainPage";
+import MainPage from "./components/page/mainPage/mainPage";
 import UserPage from "./components/page/userPage";
 import SignUpPage from "./components/page/signUpPage";
 import LoginPage from "./components/page/loginPage";

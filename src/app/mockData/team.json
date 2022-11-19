@@ -54,7 +54,7 @@
 
     {
         "_id": "member3",
-        "img": "",
+        "img": "../../../../img/member3.jpeg",
         "name": "Роман Чигвинцев",
         "badge": {
             "color": "warning",

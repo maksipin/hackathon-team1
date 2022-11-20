@@ -1,20 +1,34 @@
-const USER_ID = "userId";
-const FAVOUTITE = "favourite";
+const USERS = "users";
+const AUTH = "auth";
 
-export const setData = (userId, favourite) => {
-    localStorage.setItem(userId, favourite);
-    // localStorage.setItem(FAVOUTITE, favourite);
+export const createNewUser = (data) => {
+    const users = JSON.parse(localStorage.getItem(USERS));
+    users.push(data);
+    localStorage.setItem(USERS, JSON.stringify(users));
+    localStorage.setItem(
+        AUTH,
+        JSON.stringify({ _id: data._id, email: data.email })
+    );
 };
 
-export const getUserId = () => localStorage.getItem(USER_ID);
-
-export const getFavourite = (userId) => localStorage.getItem(userId);
-
-export const removeData = (userId) => {
-    localStorage.removeItem(userId);
-    localStorage.removeItem(FAVOUTITE);
+export const logIn = (data) => {
+    localStorage.setItem(AUTH, JSON.stringify(data));
 };
 
-const localStorageService = { setData, getUserId, getFavourite, removeData };
+export const getUsers = () => JSON.parse(localStorage.getItem(USERS));
+
+export const getAuth = () => JSON.parse(localStorage.getItem(AUTH));
+
+export const logOut = () => {
+    localStorage.removeItem(AUTH);
+};
+
+const localStorageService = {
+    createNewUser,
+    logIn,
+    logOut,
+    getUsers,
+    getAuth
+};
 
 export default localStorageService;

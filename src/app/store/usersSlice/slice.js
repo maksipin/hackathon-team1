@@ -3,7 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     items: [],
     loading: false,
-    error: null
+    error: null,
+    auth: "",
+    logged: false,
+    created: false
 };
 
 const UsersSlice = createSlice({
@@ -22,14 +25,53 @@ const UsersSlice = createSlice({
         UsersRequestFailure(state, { payload }) {
             state.loading = false;
             state.error = payload;
+        },
+
+        AuthRequestSuccess(state, { payload }) {
+            state.logged = true;
+            state.auth = payload;
+        },
+
+        AuthRequestFailed(state, { payload }) {
+            state.error = payload;
+        },
+
+        CreateUserRequestSuccess(state, { payload }) {
+            state.created = true;
+            state.items?.push(payload);
+        },
+
+        UserLogOut(state) {
+            state.auth = null;
+            state.logged = false;
+        },
+
+        UpdateUsers(state, { payload }) {
+            if (state.items) {
+                const updatedIndex = state.items.findIndex(
+                    (el) => el._id === payload._id
+                );
+                state.items[updatedIndex] = { ...payload };
+            }
+        },
+
+        RemoveErr(state) {
+            state.error = null;
         }
     }
 });
 const { reducer: usersReducer, actions } = UsersSlice;
 
-export const { UsersRequested, UsersRequestSuccess, UsersRequestFailure } =
-    actions;
-
-export const getTeam = () => (state) => state.users.items;
+export const {
+    RemoveErr,
+    UsersRequested,
+    UsersRequestSuccess,
+    UsersRequestFailure,
+    AuthRequestSuccess,
+    AuthRequestFailed,
+    CreateUserRequestSuccess,
+    UserLogOut,
+    UpdateUsers
+} = UsersSlice.actions;
 
 export default usersReducer;

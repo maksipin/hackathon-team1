@@ -1,11 +1,6 @@
 import React from "react";
 // Libs
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Redirect
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 // Components
 
 import FavouritePage from "./components/page/favoritePage";
@@ -16,6 +11,7 @@ import LoginPage from "./components/page/loginPage";
 // Layouts
 import UsersLayout from "./layouts/UsersLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import LogOut from "./layouts/LogOut";
 
 function App() {
     return (

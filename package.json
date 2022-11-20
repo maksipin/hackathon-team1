@@ -2,6 +2,7 @@
     "name": "hackathon-team1",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://maksipin.github.io/hackathon-team1/",
     "dependencies": {
         "@heroicons/react": "^2.0.13",
         "@reduxjs/toolkit": "^1.9.0",

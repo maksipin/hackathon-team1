@@ -72,6 +72,6 @@ export const {
     CreateUserRequestSuccess,
     UserLogOut,
     UpdateUsers
-} = UsersSlice.actions;
+} = actions;
 
 export default usersReducer;

@@ -3,7 +3,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // Components
 
-import FavouritePage from "./components/page/favoritePage";
 import MainPage from "./components/page/mainPage/mainPage";
 import UserPage from "./components/page/userPage";
 import SignUpPage from "./components/page/signUpPage";
@@ -12,13 +11,12 @@ import LoginPage from "./components/page/loginPage";
 import UsersLayout from "./layouts/UsersLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import LogOut from "./layouts/LogOut";
+import AppLoader from "./hoc/AppLoader";
+import FavouritePage from "./components/page/favoritePage/favouritePage";
 
 function App() {
     return (
-
-
-        <Router>
-
+        <AppLoader>
             <Switch>
                 <Route path="/auth/:path?" exact>
                     <AuthLayout>
@@ -36,9 +34,7 @@ function App() {
                     </AuthLayout>
                 </Route>
 
-
                 <Route path="/">
-
                     <UsersLayout>
                         <Switch>
                             <Route path="/" exact>
@@ -55,15 +51,11 @@ function App() {
                             <Route path="/:userId">
                                 <UserPage />
                             </Route>
-
-
                         </Switch>
                     </UsersLayout>
                 </Route>
             </Switch>
-
         </AppLoader>
-
     );
 }
 

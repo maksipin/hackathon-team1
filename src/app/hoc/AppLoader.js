@@ -1,14 +1,11 @@
-// import React, { useEffect } from "react";
+import { useEffect } from "react";
 // // Libs
-// import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
 // // Components
-// import { getUsersLoadingStatus } from "../store/usersSlice/selectors";
 // import { loadUsers } from "../store/usersSlice/actions";
 
 const AppLoader = ({ children }) => {
     // const dispatch = useDispatch();
-    // const usersStatus = useSelector(getUsersLoadingStatus);
-
 
     const initialize = () => {
         localStorage.setItem("users", JSON.stringify([]));
@@ -16,11 +13,8 @@ const AppLoader = ({ children }) => {
 
     useEffect(() => {
         initialize();
-        dispatch(loadUsers());
+        // dispatch(loadUsers());
     }, []);
-
-
-    // if (usersStatus) return <>Loading...</>;
 
     return children;
 };

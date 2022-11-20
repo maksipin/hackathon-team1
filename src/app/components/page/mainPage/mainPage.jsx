@@ -3,13 +3,16 @@ import UserCard from "../../common/UserCard";
 import Loader from "../../common/ui/Loader";
 import CreateTeamButton from "../../common/ui/CreateTeam";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../../store/usersSlice/selectors";
+import {
+    getUsers,
+    getUsersLoadingStatus
+} from "../../../store/usersSlice/selectors";
 import { loadUsers } from "../../../store/usersSlice/actions";
 
 const MainPage = () => {
     const team = useSelector(getUsers);
     const dispatch = useDispatch();
-    dispatch(loadUsers());
+    const isLoad = useSelector(getUsersLoadingStatus);
 
     const [createTeam, setCreateTeam] = useState({
         start: false,
@@ -17,7 +20,16 @@ const MainPage = () => {
     });
 
     useEffect(() => {
-        dispatch(loadUsers());
+        if (isLoad) {
+            setCreateTeam((prefState) => ({
+                ...prefState,
+                loaderFinish: true
+            }));
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!isLoad) dispatch(loadUsers());
     }, [createTeam.start]);
 
     const styleCreateTeamButton = !createTeam.start
@@ -30,19 +42,27 @@ const MainPage = () => {
 
     return (
         <div className="relative m-0">
-            <div className={styleCreateTeamButton}>
-                <CreateTeamButton
-                    setCreateTeam={setCreateTeam}
-                    createTeam={createTeam}
-                />
-            </div>
-            <div className="flex flex-col justify-center items-center min-h-screen  ">
-                <div className="m-20">
-                    <Loader
-                        downLoadTeam={createTeam}
-                        loadFinish={setCreateTeam}
+            {!createTeam.loaderFinish ? (
+                <div className={styleCreateTeamButton}>
+                    <CreateTeamButton
+                        setCreateTeam={setCreateTeam}
+                        createTeam={createTeam}
                     />
                 </div>
+            ) : null}
+            <div className="flex flex-col justify-center items-center min-h-screen  ">
+                {!createTeam.loaderFinish ? (
+                    <div className="m-20">
+                        <Loader
+                            downLoadTeam={createTeam}
+                            loadFinish={setCreateTeam}
+                        />
+                    </div>
+                ) : (
+                    <h1 className="animate-none tracking-widest border-b-2 text-center border-blue-200 font-bold text-7xl  text-blue-200">
+                        Team #1
+                    </h1>
+                )}
                 <div className={styleCard}>
                     {team.map((member) => (
                         <div className="m-14">

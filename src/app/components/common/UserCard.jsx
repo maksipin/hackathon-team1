@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getFavourite, setData } from "../../services/LocalStorageService";
+import {
+    addFavoriteUser,
+    delStatusFavoriteUserById,
+    getStatusFavoriteUserById
+} from "../../services/LocalStorageService";
+// import { getFavourite, setData } from "../../services/LocalStorageService";
 
 const UserCard = ({ _id, img, name, badge, age, location, level }) => {
-    const statusFavourite = getFavourite(_id);
+    const [favourite, setFavourite] = useState(false);
 
-    const styleFavourite = statusFavourite
+    useEffect(() => {
+        const status = getStatusFavoriteUserById(_id);
+        setFavourite(status);
+    }, []);
+
+    const styleFavourite = favourite
         ? "py-2 px-5 rounded-md border-none outline-0 text-base font-medium bg-pink-500 text-white"
         : "py-2 px-5 rounded-md text-base font-medium outline outline-2 outline-gray-500   bg-white text-gray-500";
 
@@ -19,13 +29,13 @@ const UserCard = ({ _id, img, name, badge, age, location, level }) => {
     }`;
 
     const favouriteButtonClicked = (id) => {
-        setData(id, true);
-        // const status = getFavourite(id);
-        // if (status) {
-        //     setData(id);
-        // } else {
-        //     removeData();
-        // }
+        if (favourite) {
+            delStatusFavoriteUserById(id);
+            setFavourite(false);
+        } else {
+            addFavoriteUser(id);
+            setFavourite(true);
+        }
     };
 
     return (

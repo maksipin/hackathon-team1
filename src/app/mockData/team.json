@@ -25,7 +25,8 @@
                 }
             ]
         },
-        "description": "Some text"
+        "skils": { "html": "75%", "js": "80%", "react": "70%" },
+        "description": "Это было сложно!!! Бессоные ночи, мокрая подушка... Но все же что-то получилось. Занимался версткой Главной страницы и Избранное. Tailwind подвел местами. Команда была на высоте!!!!"
     },
     {
         "_id": "member2",
@@ -36,7 +37,7 @@
             "color": "bg-red-500",
             "name": "Designer"
         },
-        "age": "",
+        "age": "25",
         "location": "Россия",
         "contact": {
             "email": "",
@@ -53,7 +54,8 @@
                 }
             ]
         },
-        "description": "Some text"
+        "skils": { "html": 75, "js": 85, "react": 70 },
+        "description": "Занимался версткой UserPage. Tailwind недавал скучать, но все же победил. Отличная работа(от тимлида)"
     },
 
     {
@@ -82,12 +84,13 @@
                 }
             ]
         },
-        "description": "Some text"
+        "skils": { "html": 75, "js": 85, "react": 90 },
+        "description": "Занимался Redux, LocalStorage servise Route. Очень хорошая подготовка. Отличная работа.(от тимлида)"
     },
     {
         "_id": "сurator",
         "img": "../../../../img/curator.webp",
-        "name": "Роман Чигвинцев",
+        "name": "Вадим Цвирко",
         "level": "Middle",
         "badge": {
             "color": "bg-violet-500",

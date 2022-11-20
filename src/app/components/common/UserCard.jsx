@@ -73,7 +73,7 @@ const UserCard = ({ _id, img, name, badge, age, location, level }) => {
                         </h3>
                     </div>
                     <div className="mb-2 flex justify-between gap-5">
-                        <Link to={`/users/${_id}/`}>
+                        <Link to={`/users/${_id}`}>
                             <button className="py-2 px-5 rounded-md border-none outline-0 text-base font-medium bg-pink-500 text-white">
                                 Подробнее
                             </button>

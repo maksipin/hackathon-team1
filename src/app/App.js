@@ -48,7 +48,7 @@ function App() {
                             <Route path="/favourite">
                                 <FavouritePage />
                             </Route>
-                            <Route path="/:userId">
+                            <Route path="/users/:userId">
                                 <UserPage />
                             </Route>
                         </Switch>

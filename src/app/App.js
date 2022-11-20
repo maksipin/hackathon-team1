@@ -2,9 +2,9 @@ import React from "react";
 // Libs
 import { Switch, Route, Redirect } from "react-router-dom";
 // Components
-import AppLoader from "./hoc/AppLoader";
+
 import FavouritePage from "./components/page/favoritePage";
-import MainPage from "./components/page/mainPage";
+import MainPage from "./components/page/mainPage/mainPage";
 import UserPage from "./components/page/userPage";
 import SignUpPage from "./components/page/signUpPage";
 import LoginPage from "./components/page/loginPage";
@@ -15,7 +15,7 @@ import LogOut from "./layouts/LogOut";
 
 function App() {
     return (
-        <AppLoader>
+        <Router>
             <Switch>
                 <Route path="/auth/:path?" exact>
                     <AuthLayout>
@@ -33,14 +33,11 @@ function App() {
                     </AuthLayout>
                 </Route>
 
-                <Route path="/">
+                <Route>
                     <UsersLayout>
                         <Switch>
                             <Route path="/" exact>
                                 <MainPage />
-                            </Route>
-                            <Route path="/logout">
-                                <LogOut />
                             </Route>
                             <Route path="/favourite">
                                 <FavouritePage />
@@ -48,11 +45,14 @@ function App() {
                             <Route path="/:userId">
                                 <UserPage />
                             </Route>
+                            <Route path="*">
+                                <Redirect to="/" />
+                            </Route>
                         </Switch>
                     </UsersLayout>
                 </Route>
             </Switch>
-        </AppLoader>
+        </Router>
     );
 }
 

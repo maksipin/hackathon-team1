@@ -60,6 +60,7 @@ const UsersSlice = createSlice({
         }
     }
 });
+const { reducer: usersReducer, actions } = UsersSlice;
 
 export const {
     RemoveErr,
@@ -73,4 +74,4 @@ export const {
     UpdateUsers
 } = UsersSlice.actions;
 
-export default UsersSlice.reducer;
+export default usersReducer;

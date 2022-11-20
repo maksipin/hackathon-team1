@@ -15,7 +15,10 @@ import LogOut from "./layouts/LogOut";
 
 function App() {
     return (
+
+
         <Router>
+
             <Switch>
                 <Route path="/auth/:path?" exact>
                     <AuthLayout>
@@ -33,26 +36,34 @@ function App() {
                     </AuthLayout>
                 </Route>
 
-                <Route>
+
+                <Route path="/">
+
                     <UsersLayout>
                         <Switch>
                             <Route path="/" exact>
                                 <MainPage />
                             </Route>
+
+                            <Route path="/logout">
+                                <LogOut />
+                            </Route>
+
                             <Route path="/favourite">
                                 <FavouritePage />
                             </Route>
                             <Route path="/:userId">
                                 <UserPage />
                             </Route>
-                            <Route path="*">
-                                <Redirect to="/" />
-                            </Route>
+
+
                         </Switch>
                     </UsersLayout>
                 </Route>
             </Switch>
-        </Router>
+
+        </AppLoader>
+
     );
 }
 

@@ -9,9 +9,16 @@ const AppLoader = ({ children }) => {
     // const dispatch = useDispatch();
     // const usersStatus = useSelector(getUsersLoadingStatus);
 
-    // useEffect(() => {
-    //     dispatch(loadUsers());
-    // }, []);
+
+    const initialize = () => {
+        localStorage.setItem("users", JSON.stringify([]));
+    };
+
+    useEffect(() => {
+        initialize();
+        dispatch(loadUsers());
+    }, []);
+
 
     // if (usersStatus) return <>Loading...</>;
 

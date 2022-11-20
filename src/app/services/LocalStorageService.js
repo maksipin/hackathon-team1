@@ -1,17 +1,17 @@
 const USER_ID = "userId";
 const FAVOUTITE = "favourite";
 
-export const setData = ({ userId, favourite }) => {
-    localStorage.setItem(USER_ID, userId);
-    localStorage.setItem(FAVOUTITE, favourite);
+export const setData = (userId, favourite) => {
+    localStorage.setItem(userId, favourite);
+    // localStorage.setItem(FAVOUTITE, favourite);
 };
 
 export const getUserId = () => localStorage.getItem(USER_ID);
 
-export const getFavourite = () => localStorage.getItem(REFRESH_KEY);
+export const getFavourite = (userId) => localStorage.getItem(userId);
 
-export const removeData = () => {
-    localStorage.removeItem(USER_ID);
+export const removeData = (userId) => {
+    localStorage.removeItem(userId);
     localStorage.removeItem(FAVOUTITE);
 };
 

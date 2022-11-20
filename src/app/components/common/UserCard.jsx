@@ -1,22 +1,35 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { getFavourite, setData } from "../../services/LocalStorageService";
 
-const UserCard = ({ img, name, badge }) => {
-    // const styleBadge = ` p-1 text-base font-medium opacity-50 uppercase rounded-md shadow-md ${
-    //     badge.color === "primary"
-    //         ? "bg-primary"
-    //         : badge.color === "danger"
-    //         ? "bg-danger"
-    //         : badge.color === "warning"
-    //         ? "bg-warning"
-    //         : "bg-white"
-    // }`;
-    const backGroundColor = "bg-" + badge.color;
-    const styleBadge = ` p-1 text-base font-medium opacity-50 uppercase rounded-md shadow-md ${backGroundColor}`;
+const UserCard = ({ _id, img, name, badge, age, location, level }) => {
+    const statusFavourite = getFavourite(_id);
 
-    console.log({ styleBadge });
+    const styleFavourite = statusFavourite
+        ? "py-2 px-5 rounded-md border-none outline-0 text-base font-medium bg-pink-500 text-white"
+        : "py-2 px-5 rounded-md text-base font-medium outline outline-2 outline-gray-500   bg-white text-gray-500";
+
+    const backGroundColor = badge.color;
+    const styleBadge =
+        "p-1 text-base font-medium opacity-50 uppercase rounded-md shadow-md " +
+        backGroundColor;
+
+    const styleCardHover = `relative w-80 h-52 bg-white rounded-2xl shadow-2xl  transition-all delay-75 duration-500 ${
+        _id === "сurator" ? "" : "hover:h-450px group"
+    }`;
+
+    const favouriteButtonClicked = (id) => {
+        setData(id, true);
+        // const status = getFavourite(id);
+        // if (status) {
+        //     setData(id);
+        // } else {
+        //     removeData();
+        // }
+    };
 
     return (
-        <div className="relative w-80 h-52 bg-white rounded-2xl shadow-2xl hover:h-450px transition-all delay-75 duration-500 group">
+        <div className={styleCardHover}>
             <div className="absolute left-1/2 -top-14 -translate-x-1/2 w-40 h-40 bg-white rounded-3xl shadow-md overflow-hidden group-hover:h-64 group-hover:w-64 transition-all  duration-700">
                 <img className="absolute" src={img} alt="avatar" />
             </div>
@@ -28,26 +41,37 @@ const UserCard = ({ img, name, badge }) => {
                         </h2>
                         <span className={styleBadge}>{badge.name}</span>
                     </div>
-                    <div className="flex justify-between my-5 text-base text-gray-700 leading-5 font-semibold translate-y-2 group-hover:translate-y-0 duration-200">
-                        <h3>
-                            342
+                    <div className="flex justify-center  text-base text-gray-700 leading-5 font-semibold translate-y-2 group-hover:translate-y-0 duration-200">
+                        <h3 className="mx-7 my-5">
+                            {age}
                             <br />
                             <span className=" text-sm font-normal opacity-50">
-                                Hours
+                                Age
                             </span>
                         </h3>
-                        <h3>
-                            342 <br />
+                        <h3 className="mx-7 my-5 mr-3">
+                            {level} <br />
                             <span className=" text-sm font-normal opacity-50">
-                                Minutes
+                                Level
+                            </span>
+                        </h3>
+                        <h3 className="mx-7 my-5">
+                            {location} <br />
+                            <span className=" text-sm font-normal opacity-50">
+                                Location
                             </span>
                         </h3>
                     </div>
                     <div className="mb-2 flex justify-between gap-5">
-                        <button className="py-2 px-5 rounded-md border-none outline-0 text-base font-medium bg-pink-500 text-white">
-                            Подробнее
-                        </button>
-                        <button className="py-2 px-5 rounded-md  outline outline-2 outline-gray-500 text-base font-medium bg-white text-gray-500">
+                        <Link to={`/users/${_id}/`}>
+                            <button className="py-2 px-5 rounded-md border-none outline-0 text-base font-medium bg-pink-500 text-white">
+                                Подробнее
+                            </button>
+                        </Link>
+                        <button
+                            className={styleFavourite}
+                            onClick={() => favouriteButtonClicked(_id)}
+                        >
                             В избанное
                         </button>
                     </div>

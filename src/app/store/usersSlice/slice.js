@@ -25,8 +25,11 @@ const UsersSlice = createSlice({
         }
     }
 });
+const { reducer: usersReducer, actions } = UsersSlice;
 
 export const { UsersRequested, UsersRequestSuccess, UsersRequestFailure } =
-    UsersSlice.actions;
+    actions;
 
-export default UsersSlice.reducer;
+export const getTeam = () => (state) => state.users.items;
+
+export default usersReducer;

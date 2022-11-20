@@ -1,5 +1,6 @@
 // Libs
 import { nanoid } from "nanoid";
+import { createAction } from "@reduxjs/toolkit";
 // Components
 import {
     UsersRequested,
@@ -8,17 +9,20 @@ import {
     AuthRequestSuccess,
     AuthRequestFailed,
     UserLogOut,
-    CreateUserRequestSuccess
+    CreateUserRequestSuccess,
+    RemoveErr
 } from "./slice";
 
 import UserService from "../../services/UsersService";
-import { createAction } from "@reduxjs/toolkit";
-import { customHistory } from "./../../utils/CustomHistory";
 import localStorageService from "./../../services/LocalStorageService";
 
 const AuthRequest = createAction("users/AuthRequest");
 const CreateUserRequest = createAction("users/CreateUserRequest");
 const CreateUserRequestFailed = createAction("users/CreateUserRequestFailed");
+
+export const removeErr = () => (dispatch) => {
+    dispatch(RemoveErr());
+};
 
 export const loadUsers = () => async (dispatch) => {
     try {
@@ -38,13 +42,12 @@ export const signUp =
             dispatch(AuthRequest());
 
             const users = localStorageService.getUsers();
-            for (const el of users) {
-                if (el.email === email) {
-                    throw new Error("Такой Email существует");
-                }
+            const currentUser = users.find((el) => el.email === email);
+            if (currentUser) {
+                throw new Error("This email exists");
             }
 
-            localStorageService.setData({
+            localStorageService.createNewUser({
                 _id,
                 email,
                 name,
@@ -72,9 +75,7 @@ export const signUp =
                 })
             );
 
-            dispatch(AuthRequestSuccess({ _id }));
-
-            customHistory.push("/");
+            dispatch(AuthRequestSuccess({ _id, email }));
         } catch (error) {
             dispatch(AuthRequestFailed({ register: error.message }));
         }
@@ -94,24 +95,20 @@ export const signIn =
     (dispatch, getState) => {
         try {
             dispatch(AuthRequest());
-            let flag = false;
 
             const users = localStorageService.getUsers();
-            for (const el of users) {
-                if (el.email === email) {
-                    if (el.password === password) {
-                        flag = true;
-                        break;
-                    }
-                }
-            }
+            const currentUser = users.find(
+                (el) => el.email === email && el.password === password
+            );
 
-            if (!flag) {
+            if (!currentUser) {
                 throw new Error(
                     "Problems with email or password. Check it and try again."
                 );
             }
 
+            localStorageService.logIn({ _id: currentUser._id, email });
+            console.log("success");
             dispatch(AuthRequestSuccess({ email, password }));
         } catch (error) {
             dispatch(AuthRequestFailed({ login: error.message }));
@@ -119,6 +116,7 @@ export const signIn =
     };
 
 export const LoggedOut = () => (dispatch) => {
+    localStorageService.logOut();
     dispatch(UserLogOut());
 };
 

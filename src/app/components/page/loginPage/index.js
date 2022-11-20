@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 // Libs
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // Components
-import { signIn } from "../../../store/usersSlice/actions";
+import { removeErr, signIn } from "../../../store/usersSlice/actions";
 import { getUserError } from "../../../store/usersSlice/selectors";
 
 const LoginPage = () => {
@@ -12,6 +12,7 @@ const LoginPage = () => {
     const [error, setError] = useState({ name: "", email: "", password: "" });
     const dispatch = useDispatch();
     const mainError = useSelector(getUserError);
+    const history = useHistory();
 
     useEffect(() => {
         validate();
@@ -39,6 +40,7 @@ const LoginPage = () => {
     });
 
     function validate() {
+        dispatch(removeErr());
         validateScheme
             .validate(data)
             .then(() => setError({}))
@@ -48,6 +50,9 @@ const LoginPage = () => {
 
     const handleSubmit = () => {
         dispatch(signIn(data));
+        if (!mainError) {
+            history.push("/");
+        }
     };
 
     const handleChange = ({ target }) => {

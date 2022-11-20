@@ -11,6 +11,7 @@ import LoginPage from "./components/page/loginPage";
 // Layouts
 import UsersLayout from "./layouts/UsersLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import LogOut from "./layouts/LogOut";
 
 function App() {
     return (
@@ -37,6 +38,9 @@ function App() {
                         <Switch>
                             <Route path="/" exact>
                                 <MainPage />
+                            </Route>
+                            <Route path="/logout">
+                                <LogOut />
                             </Route>
                             <Route path="/favourite">
                                 <FavouritePage />

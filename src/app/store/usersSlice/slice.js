@@ -53,11 +53,16 @@ const UsersSlice = createSlice({
                 );
                 state.items[updatedIndex] = { ...payload };
             }
+        },
+
+        RemoveErr(state) {
+            state.error = null;
         }
     }
 });
 
 export const {
+    RemoveErr,
     UsersRequested,
     UsersRequestSuccess,
     UsersRequestFailure,

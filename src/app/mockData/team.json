@@ -1,0 +1,115 @@
+[
+    {
+        "_id": "member1",
+        "img": "../../../../img/member1.jpg",
+        "name": "Максим Иванов",
+        "level": "Junior",
+        "badge": {
+            "color": "bg-sky-500",
+            "name": "Team leader"
+        },
+        "age": 36,
+        "location": "Калуга",
+        "contact": {
+            "email": "maksipin@gmail.com",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "@ma_ivanov",
+                    "link": "https://t.me/ma_ivanov"
+                },
+                {
+                    "title": "VK",
+                    "text": "vk.com/ma_ivanov",
+                    "link": "https://vk.com/ma_ivanov"
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+    {
+        "_id": "member2",
+        "img": "../../../../img/member2.jpg",
+        "name": "Сергей Медведев",
+        "level": "Junior",
+        "badge": {
+            "color": "bg-red-500",
+            "name": "Designer"
+        },
+        "age": "",
+        "location": "Россия",
+        "contact": {
+            "email": "",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "",
+                    "link": ""
+                },
+                {
+                    "title": "VK",
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+
+    {
+        "_id": "member3",
+        "img": "../../../../img/member3.jpeg",
+        "name": "Роман Чигвинцев",
+        "level": "Junior",
+        "badge": {
+            "color": "bg-yellow-500",
+            "name": "Reduxman"
+        },
+        "age": "22",
+        "location": "Россия",
+        "contact": {
+            "email": "ChigvincevRA@mail.ru",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "@Shallfeu_313",
+                    "link": "https://t.me/Shallfeu_313"
+                },
+                {
+                    "title": "VK",
+                    "text": "vk.com/shallfeu",
+                    "link": "https://vk.com/shallfeu"
+                }
+            ]
+        },
+        "description": "Some text"
+    },
+    {
+        "_id": "сurator",
+        "img": "../../../../img/curator.webp",
+        "name": "Роман Чигвинцев",
+        "level": "Middle",
+        "badge": {
+            "color": "bg-violet-500",
+            "name": "keeper"
+        },
+        "age": "",
+        "location": "Россия",
+        "contact": {
+            "email": "",
+            "social": [
+                {
+                    "title": "telegram",
+                    "text": "",
+                    "link": ""
+                },
+                {
+                    "title": "VK",
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        "description": "Some text"
+    }
+]

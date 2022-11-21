@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Loader = ({ downLoadTeam, loadFinish }) => {
+    const history = useHistory();
+
     if (downLoadTeam.start === false) return;
     const loaderTextArr = [
         "Надеваем наушники и наслаждаемся",
@@ -34,6 +37,7 @@ const Loader = ({ downLoadTeam, loadFinish }) => {
     useEffect(() => {
         if (slide === items.length - 1) {
             loadFinish((prefState) => ({ ...prefState, loaderFinish: true }));
+            history.push("/");
             return;
         }
         const interval = setInterval(() => {

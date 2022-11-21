@@ -13,6 +13,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import LogOut from "./layouts/LogOut";
 import AppLoader from "./hoc/AppLoader";
 import FavouritePage from "./components/page/favoritePage/favouritePage";
+import Main from "./components/page/main";
 
 function App() {
     return (
@@ -39,6 +40,9 @@ function App() {
                         <Switch>
                             <Route path="/" exact>
                                 <MainPage />
+                            </Route>
+                            <Route path="/hackathon-team1" exact>
+                                <Main />
                             </Route>
 
                             <Route path="/logout">

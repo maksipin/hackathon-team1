@@ -9,12 +9,16 @@ import UserCard from "../../common/UserCard";
 const FavouritePage = () => {
     const team = getFavoriteUser();
     const [favourite, setFavourite] = useState([]);
-    const teams = team.map((item) => useSelector(getUsersById(item)));
+
     const dispatch = useDispatch();
+    let teams = [];
+    if (team.length > 0) {
+        teams = team.map((item) => useSelector(getUsersById(item)));
+    }
 
     useEffect(() => {
-        setFavourite(teams);
         dispatch(loadUsers());
+        setFavourite(teams);
     }, []);
 
     return (
@@ -26,7 +30,7 @@ const FavouritePage = () => {
             </div>
             <div className=" flex items-center min-h-screen  ">
                 <div className="m-5 flex justify-center items-center min-w-screen flex-wrap animate-slideCard">
-                    {favourite.length > 0 ? (
+                    {teams.length > 0 ? (
                         favourite.map((member) => {
                             console.log("member", member);
                             return (
